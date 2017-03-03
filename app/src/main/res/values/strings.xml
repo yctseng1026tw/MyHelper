@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyHelper</string>
+    <array name="dialog">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </array>
+
+    <array name="week">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </array>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="productivity.eastioquick.com.myhelper.AlarmActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+
+
+    >
+
+    <TextView android:text="名稱："
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        />
+    <EditText android:id="@+id/DESCRIPTION"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DESCRIPTION"
+        android:layout_marginLeft="10sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="時間："
+        android:onClick="doHourDialog"
+        android:textStyle="bold|italic"
+        />
+    <TextView android:id="@+id/TIMER"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        />
+
+
+    <TextView android:id="@+id/weekLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="週期："
+        android:onClick="doWeekDialog"
+        android:textStyle="bold|italic"
+        />
+    <TextView android:id="@+id/week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        />
+    <TextView android:id="@+id/WEEK_PERIOD"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:visibility="invisible"
+        />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HAS_WEATHER"
+        android:text="氣象"
+        android:textStyle="bold|italic"/>
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HAS_NEWS"
+        android:text="新聞"
+        android:textStyle="bold|italic"/>
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HAS_CALENDAR"
+        android:text="行事"
+        android:textStyle="bold|italic"/>
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HAS_EMAIL"
+        android:text="EMAIL"
+
+        android:textStyle="bold|italic"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:stretchColumns="*"
+        >
+        <TableRow>
+            <Button android:text="Insert" android:onClick="doInsertAlarm"/>
+            <Button android:text="Update" android:onClick="doUpdateAlarm"/>
+            <Button android:text="Start" android:onClick="doStartAlarm" />
+            <Button android:text="Cancel" android:onClick="doCancelAlarm" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
+</ScrollView>

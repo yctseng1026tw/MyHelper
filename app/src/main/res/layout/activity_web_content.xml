@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_web_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+
+    tools:context="productivity.eastioquick.com.myhelper.WebContentActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="url"/>
+    <EditText
+        android:id="@+id/eturl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xpath"/>
+    <EditText
+        android:id="@+id/etPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="//parameterValue"
+        />
+    -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tag"/>
+    <EditText
+        android:id="@+id/etTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="parameterValue"
+        />
+
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+    <Button
+        android:text="XML"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="doXML"/>
+
+    <Button
+        android:text="JSON"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="doJSON"
+        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0">
+        <TableRow>
+            <EditText
+                android:id="@+id/etWVUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="http://ehis.vghtc.gov.tw/cpoe"
+                />
+            <ImageButton android:onClick="doBrowser"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+        </TableRow>
+    </TableLayout>
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+</ScrollView>
+

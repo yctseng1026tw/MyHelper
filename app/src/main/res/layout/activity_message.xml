@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_message"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="productivity.eastioquick.com.myhelper.MessageActivity">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toast"
+        android:onClick="doToast"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/radioGroupDialog">
+
+        <RadioButton
+            android:text="1 Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1Message"
+            android:layout_weight="1" />
+        <RadioButton
+            android:text="1 item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1Item"
+            android:layout_weight="1" />
+        <RadioButton
+            android:text="1 Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1Choice"
+            android:layout_weight="1" />
+        <RadioButton
+            android:text="Simple 1 Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1ChoiceSimple"
+            android:layout_weight="1" />
+        <RadioButton
+            android:text="Multi Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonMultiChoice"
+            android:layout_weight="1" />
+        <RadioButton
+            android:text="Simple Multi Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonMultiChoiceSimple"
+            android:layout_weight="1" />
+    </RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dialog"
+        android:onClick="doDialog"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notify"
+        android:onClick="doNotify"/>
+
+
+</LinearLayout>
