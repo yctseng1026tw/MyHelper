@@ -2,6 +2,7 @@ package com.eastioquick.helper;
 
 import android.app.AlertDialog;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class MessageHelper {
     Context context;
+
     public interface SingleChoice{
         public void receive(int index);
     }
@@ -23,6 +25,12 @@ public class MessageHelper {
     }
     public  MessageHelper(Context context){
         this.context=context;
+
+    }
+    public void showNotify(int id,Notification.Builder builder){
+        NotificationManager notificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(id, builder.build());
     }
     public AlertDialog dialog(String title, String messsage, LinkedHashMap clicks){
         return dialog( title, new String[]{messsage}, clicks,null,null,null);
@@ -161,9 +169,10 @@ public class MessageHelper {
     public Toast toast(String msg){return
         Toast.makeText(context,msg,Toast.LENGTH_LONG);
     }
-    public Notification.Builder notify(String title,String text,long when){
+    public Notification.Builder notify(String title,String text,long when,int smallIcon){
         Notification.Builder builder =new  Notification.Builder(context);
-        builder.setContentTitle(title)
+        builder.setSmallIcon(smallIcon)
+                .setContentTitle(title)
                 .setContentText(text)
                 .setWhen(when);
         int defaults=0;

@@ -69,10 +69,10 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
     }
 
     private static String getTableName(String createSQL){
-        int eidx=createSQL.indexOf("(")-1;
+        int eidx=createSQL.indexOf("(");
         String s=createSQL.substring(0,eidx).toUpperCase();
         int sidx=s.indexOf("TABLE");
-        String tableName=s.substring(sidx).replaceFirst("TABLE","");
+        String tableName=s.substring(sidx).replaceFirst("TABLE","").trim();
         return tableName;
     }
     public static String getTableName(Context context){

@@ -3,6 +3,8 @@ package com.eastioquick.helper;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 
 import com.eastioquick.util.ArrayUtil;
 
@@ -19,14 +21,23 @@ public class AlarmHelper {
     public void cancel(PendingIntent pi){
         am.cancel(pi);
     }
-    public void repeatWeek(String WEEK,String hm,PendingIntent pi){
-        int []def=ArrayUtil.str2ArrInt(WEEK,",");
+    public void cancelWeek(String WEEK,String action){
+        int []weekDays=ArrayUtil.str2ArrInt(WEEK,",");
+        for(int i=0;i<weekDays.length;i++){
+            int weekDay=weekDays[i];
+            PendingIntent pi=getPendingIntent(this.context, action, weekDay);
+            am.cancel(pi);
+        }
+    }
+    public void repeatWeek(String WEEK,String hm,String action){
+        int []weekDays=ArrayUtil.str2ArrInt(WEEK,",");
         int []ihm=ArrayUtil.str2ArrInt(hm,":");
         int hour=ihm[0];
         int minutes=ihm[1];
-        for(int i=0;i<def.length;i++){
+        for(int i=0;i<weekDays.length;i++){
+            int weekDay=weekDays[i];
             Calendar cal= Calendar.getInstance();
-            cal.set(Calendar.DAY_OF_WEEK,def[i]+1);
+            cal.set(Calendar.DAY_OF_WEEK,weekDay+1);
             cal.set(Calendar.HOUR_OF_DAY, hour);
             cal.set(Calendar.MINUTE, minutes);
             cal.set(Calendar.SECOND, 0);
@@ -35,7 +46,29 @@ public class AlarmHelper {
                 cal.add(Calendar.DAY_OF_YEAR,7);
             }
             long firstAlarm=cal.getTimeInMillis();
+
+            PendingIntent pi=getPendingIntent(this.context, action, weekDay);
             am.setRepeating(AlarmManager.RTC_WAKEUP, firstAlarm, 7* 24 * 60 * 60 * 1000 , pi);
         }
+    }
+    public PendingIntent getPendingIntent(Context context,String action,int id){
+        //Intent alarmIntent = new Intent(context, receiverClass);
+        Intent alarmIntent = new Intent(action, Uri.parse("timer:"+id));
+        //intent.putExtra("id", item.getId());
+        PendingIntent pi = PendingIntent.getBroadcast(
+                context, id,
+                alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        //alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        return pi;
+    }
+    public PendingIntent getPendingIntent(Context context,Class receiverClass,int id){
+        Intent alarmIntent = new Intent(context, receiverClass);
+
+        //intent.putExtra("id", item.getId());
+        PendingIntent pi = PendingIntent.getBroadcast(
+                context, id,
+                alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        //alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        return pi;
     }
 }

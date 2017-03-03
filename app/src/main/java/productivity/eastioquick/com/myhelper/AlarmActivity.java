@@ -1,7 +1,6 @@
 package productivity.eastioquick.com.myhelper;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +40,7 @@ public class AlarmActivity extends Activity {
         messageHelper=new MessageHelper(this);
         alarmHelper=new AlarmHelper(this);
         DBSQLiteHelper.initialize(this);
-        dbHelper=DBSQLiteHelper.build(this,"MyHelper",2);
+        dbHelper=DBSQLiteHelper.build(this,"MyHelper",3);
 
         weekDesc=getResources().getStringArray(R.array.week);
         initView();
@@ -116,19 +115,27 @@ public class AlarmActivity extends Activity {
         tpd.show();
     }
     public void doInsertAlarm(View v){
-        dbHelper.insert(this);
+        mapAlarm=dbHelper.insert(this);
+        messageHelper.toast("doInsertAlarm OK").show();
     }
     public void doUpdateAlarm(View v){
         dbHelper.update( this, id);
+        messageHelper.toast("doUpdateAlarm OK").show();
+
+
     }
+
+
     public void doStartAlarm(View v){
-        String week=dbHelper.getViewValById(mapAlarm, R.id.WEEK_PERIOD);
-        String hm=dbHelper.getViewValById(mapAlarm,R.id.TIMER);
-        alarmHelper.repeatWeek(week,hm,AlarmReceiver.class,id);
+        String week=tvWEEK_PERIOD.getText().toString();
+        String hm=tvTIMER.getText().toString();
+        alarmHelper.repeatWeek(week,hm,AlarmReceiver.ACTION_ALARM);
+        messageHelper.toast("doStartAlarm OK").show();
     }
     public void doCancelAlarm(View v){
-        PendingIntent pi=alarmHelper.getPendingIntent(this,AlarmReceiver.class,id);
-        alarmHelper.cancel(pi);
+        String week=dbHelper.getViewValById(mapAlarm, R.id.WEEK_PERIOD);
+        alarmHelper.cancelWeek( week,AlarmReceiver.ACTION_ALARM);
+        messageHelper.toast("doCancelAlarm OK").show();
     }
 
 }

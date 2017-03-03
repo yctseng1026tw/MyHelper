@@ -83,12 +83,19 @@
         android:text="EMAIL"
 
         android:textStyle="bold|italic"/>
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/IS_START"
+        android:text="啟動" />
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:stretchColumns="*"
         >
+
         <TableRow>
             <Button android:text="Insert" android:onClick="doInsertAlarm"/>
             <Button android:text="Update" android:onClick="doUpdateAlarm"/>
