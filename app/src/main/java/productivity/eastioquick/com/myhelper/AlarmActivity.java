@@ -3,7 +3,6 @@ package productivity.eastioquick.com.myhelper;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -123,22 +122,13 @@ public class AlarmActivity extends Activity {
         dbHelper.update( this, id);
     }
     public void doStartAlarm(View v){
-        PendingIntent pi=getPendingIntent();
         String week=dbHelper.getViewValById(mapAlarm, R.id.WEEK_PERIOD);
         String hm=dbHelper.getViewValById(mapAlarm,R.id.TIMER);
-        alarmHelper.repeatWeek(week,hm,pi);
+        alarmHelper.repeatWeek(week,hm,AlarmReceiver.class,id);
     }
     public void doCancelAlarm(View v){
-        PendingIntent pi=getPendingIntent();
+        PendingIntent pi=alarmHelper.getPendingIntent(this,AlarmReceiver.class,id);
         alarmHelper.cancel(pi);
     }
-    public PendingIntent getPendingIntent(){
-        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        //intent.putExtra("id", item.getId());
-        PendingIntent pi = PendingIntent.getBroadcast(
-                this, id,
-                alarmIntent, PendingIntent.FLAG_ONE_SHOT);
-                //alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-        return pi;
-    }
+
 }
