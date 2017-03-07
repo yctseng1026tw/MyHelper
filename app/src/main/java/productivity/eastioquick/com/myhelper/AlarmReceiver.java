@@ -8,11 +8,9 @@ import android.content.Intent;
 import com.eastioquick.helper.MessageHelper;
 import com.eastioquick.helper.VoiceHelper;
 import com.eastioquick.helper.WebContentHelper;
-import com.eastioquick.service.TTSService;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Locale;
 
 public class AlarmReceiver extends BroadcastReceiver {
     VoiceHelper voiceHelper;
@@ -30,8 +28,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         Ringtone ringtone = RingtoneManager.getRingtone(context, uri);
         ringtone.play();
+        if(true)return;
 */
-
 /*
     try{
         voiceHelper =new VoiceHelper(context);
@@ -59,12 +57,12 @@ public class AlarmReceiver extends BroadcastReceiver {
                     Notification.Builder builder= messageHelper.notify("title",ss,System.currentTimeMillis(),R.drawable.ic_cast_dark);
                     messageHelper.showNotify(1, builder);
 
-                    //voiceHelper.speak(ss);
+                    /*
                     Intent intent=new Intent(context, TTSService.class);
                     intent.putExtra(TTSService.SPOKEN_TEXT,ss);
                     intent.putExtra(TTSService.LANGUAGE, Locale.CHINESE);
                     context.startService(intent);
-
+*/
 
                 } catch (Exception e) {
                     e.printStackTrace();

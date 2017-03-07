@@ -133,7 +133,7 @@ public class AlarmActivity extends Activity {
         messageHelper.toast("doStartAlarm OK").show();
     }
     public void doCancelAlarm(View v){
-        String week=dbHelper.getViewValById(mapAlarm, R.id.WEEK_PERIOD);
+        String week=tvWEEK_PERIOD.getText().toString();
         alarmHelper.cancelWeek( week,AlarmReceiver.ACTION_ALARM);
         messageHelper.toast("doCancelAlarm OK").show();
     }

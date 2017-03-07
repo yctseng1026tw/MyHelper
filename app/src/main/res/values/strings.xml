@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyHelper</string>
+    <string name="app_name">MyHelper v3</string>
     <array name="dialog">
         <item>One</item>
         <item>Two</item>

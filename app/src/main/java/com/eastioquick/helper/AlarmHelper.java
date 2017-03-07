@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 
 import com.eastioquick.util.ArrayUtil;
 
@@ -26,6 +25,7 @@ public class AlarmHelper {
         for(int i=0;i<weekDays.length;i++){
             int weekDay=weekDays[i];
             PendingIntent pi=getPendingIntent(this.context, action, weekDay);
+            pi.cancel();
             am.cancel(pi);
         }
     }
@@ -53,12 +53,17 @@ public class AlarmHelper {
     }
     public PendingIntent getPendingIntent(Context context,String action,int id){
         //Intent alarmIntent = new Intent(context, receiverClass);
-        Intent alarmIntent = new Intent(action, Uri.parse("timer:"+id));
+        String laction=action;
+        //Intent alarmIntent = new Intent(laction, Uri.parse("timer:"+id));
+        Intent alarmIntent = new Intent(laction);
+
+        //alarmIntent.setAction(laction);
+
         //intent.putExtra("id", item.getId());
         PendingIntent pi = PendingIntent.getBroadcast(
                 context, id,
-                alarmIntent, PendingIntent.FLAG_ONE_SHOT);
-        //alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+         //       alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         return pi;
     }
     public PendingIntent getPendingIntent(Context context,Class receiverClass,int id){
@@ -67,8 +72,8 @@ public class AlarmHelper {
         //intent.putExtra("id", item.getId());
         PendingIntent pi = PendingIntent.getBroadcast(
                 context, id,
-                alarmIntent, PendingIntent.FLAG_ONE_SHOT);
-        //alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        //        alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         return pi;
     }
 }
